@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bill Landing Page — JTBD Redesign Variations</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#F7F7F5;color:#1a1a1a}
+button,input,select{font-family:inherit}
+.hero{padding:48px 32px 32px;text-align:center;background:linear-gradient(180deg,#fff,#F7F7F5)}
+.hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:#999;margin-bottom:10px}
+.hero h1{font-size:32px;font-weight:800;margin:0 0 8px;line-height:1.2}
+.hero p{font-size:14px;color:#777;max-width:600px;margin:0 auto;line-height:1.5}
+.tabs{display:flex;justify-content:center;gap:8px;padding:0 24px 32px;flex-wrap:wrap}
+.tab-btn{padding:8px 20px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;border:1.5px solid #ddd;background:#fff;color:#555}
+.tab-btn.active{border:none;background:#1a1a1a;color:#fff}
+.phones-row{display:flex;justify-content:center;gap:40px;padding:0 24px 60px;flex-wrap:wrap}
+.phone-wrapper{display:flex;flex-direction:column;align-items:center;gap:12px}
+.phone-frame{width:375px;height:780px;background:#fff;border-radius:40px;border:8px solid #1a1a1a;position:relative;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.15),0 8px 20px rgba(0,0,0,.1)}
+.status-bar{height:50px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.status-bar .time{font-size:14px;font-weight:700}
+.phone-content{height:722px;overflow-y:auto;overflow-x:hidden}
+.phone-label{font-size:15px;font-weight:700;text-align:center;margin-top:4px}
+.phone-desc{font-size:12px;color:#666;text-align:center;line-height:1.4;max-width:375px}
+.hidden{display:none!important}
+.matrix-card{background:#fff;border-radius:16px;padding:28px 24px;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid #eee;max-width:1050px;margin:0 auto}
+.matrix-card h3{font-size:18px;font-weight:800;margin-bottom:4px}
+.matrix-card p{font-size:13px;color:#888;margin-bottom:20px}
+.matrix-card table{width:100%;border-collapse:collapse;font-size:11px}
+.matrix-card th{text-align:left;padding:8px 6px;font-weight:700;color:#555;border-bottom:2px solid #eee}
+.matrix-card td{padding:8px 6px;border-bottom:1px solid #f5f5f5;vertical-align:top}
+@media(max-width:480px){.phone-frame{width:340px;height:740px}.hero h1{font-size:24px}.phones-row{gap:24px}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">BILL LANDING PAGE REDESIGN</div>
+  <h1>JTBD-Driven Variations</h1>
+  <p>Three design approaches addressing 9 jobs-to-be-done on the Review Amount / Payment screen — from amount selection to error recovery</p>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab-btn active" data-tab="all">All Variations</button>
+  <button class="tab-btn" data-tab="a">A: Smart Pay</button>
+  <button class="tab-btn" data-tab="b">B: Full Picture</button>
+  <button class="tab-btn" data-tab="c">C: Step Flow</button>
+  <button class="tab-btn" data-tab="matrix">Coverage Matrix</button>
+</div>
+
+<div class="phones-row" id="phones-row">
+  <div class="phone-wrapper" data-variation="a"><div class="phone-frame"><div class="status-bar"><span class="time">11:28</span><div></div></div><div class="phone-content" id="phone-a"></div></div>
+    <div class="phone-label">Variation A — Smart Pay</div>
+    <div class="phone-desc">Quick-pick amounts, urgency banner, inline history drawer, full summary before pay</div>
+  </div>
+  <div class="phone-wrapper" data-variation="b"><div class="phone-frame"><div class="status-bar"><span class="time">11:28</span><div></div></div><div class="phone-content" id="phone-b"></div></div>
+    <div class="phone-label">Variation B — Full Picture</div>
+    <div class="phone-desc">Everything-visible layout, payment breakdown card, urgency countdown, history overlay</div>
+  </div>
+  <div class="phone-wrapper" data-variation="c"><div class="phone-frame"><div class="status-bar"><span class="time">11:28</span><div></div></div><div class="phone-content" id="phone-c"></div></div>
+    <div class="phone-label">Variation C — Step Flow</div>
+    <div class="phone-desc">Progressive: choose amount → review summary → confirm. Built-in downtime + paid states</div>
+  </div>
+</div>
+
+<div id="matrix-section" class="hidden" style="padding:0 24px 60px">
+  <div class="matrix-card">
+    <h3>JTBD Coverage Matrix</h3>
+    <p>How each variation addresses the identified gaps</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr>
+          <th style="width:40px">Job</th><th style="width:200px">Need</th>
+          <th style="color:#6C3CE1">A: Smart Pay</th>
+          <th style="color:#0047AB">B: Full Picture</th>
+          <th style="color:#C75000">C: Step Flow</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><b>J9</b></td><td>Choose how much to pay</td><td>✅ Preset chips (Min EMI, Full, Custom)</td><td>✅ Radio cards with breakdown</td><td>✅ Amount cards in step 1</td></tr>
+          <tr><td><b>J10</b></td><td>Review full summary before committing</td><td>✅ Expandable summary card</td><td>✅ Always-visible breakdown</td><td>✅ Dedicated review step 2</td></tr>
+          <tr><td><b>J11</b></td><td>Know if bill already paid</td><td>✅ Green "paid" state banner</td><td>✅ Paid confirmation card</td><td>✅ Paid badge with receipt link</td></tr>
+          <tr><td><b>J12</b></td><td>Retry when biller is down</td><td>✅ Downtime banner + notify me</td><td>✅ Status bar + retry timer</td><td>✅ Downtime state with schedule</td></tr>
+          <tr><td><b>J13</b></td><td>Know exactly how much is due</td><td>✅ Clear due amount header</td><td>✅ Summary bar (EMI + Outstanding)</td><td>✅ Amount + due date prominent</td></tr>
+          <tr><td><b>J14</b></td><td>Urgency / avoid late fees</td><td>✅ Red urgency banner + days left</td><td>✅ Countdown timer + late fee warning</td><td>✅ Urgency chip on due date</td></tr>
+          <tr><td><b>J15</b></td><td>View history without leaving</td><td>✅ Inline drawer with history</td><td>✅ Bottom sheet overlay</td><td>✅ Expandable section in review</td></tr>
+          <tr><td><b>J16</b></td><td>Apply reward / offer</td><td>✅ Offer strip (preserved)</td><td>✅ Savings callout card</td><td>✅ Offer applied in summary</td></tr>
+          <tr><td><b>J17</b></td><td>Get help if something looks wrong</td><td>✅ Prominent HELP + "Something wrong?"</td><td>✅ Contextual help link</td><td>✅ Help accessible in every step</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const backArrow = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>`;
+const backArrowW = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>`;
+const shield = `<svg width="13" height="13" viewBox="0 0 24 24" fill="#2E7D32" stroke="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5L12 1z"/></svg>`;
+const checkCircle = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+const clock = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+const history = [
+  { date:'14 Mar 2026', amount:'₹1,470', status:'Paid' },
+  { date:'14 Feb 2026', amount:'₹1,470', status:'Paid' },
+  { date:'14 Jan 2026', amount:'₹1,470', status:'Paid' },
+  { date:'14 Dec 2025', amount:'₹1,470', status:'Late' },
+];
+
+// ═══ State ═══
+const sA = { mode:'normal', payType:'full', custom:'', showSummary:false, showHistory:false };
+// modes: normal, paid, down
+const sB = { mode:'normal', payType:'full', custom:'', showHistory:false };
+const sC = { mode:'normal', step:1, payType:'full', custom:'', showHistory:false };
+
+function fmt(n){ return '₹'+Number(n).toLocaleString('en-IN'); }
+
+// ═══════════════════════════════════════
+// VARIATION A — Smart Pay
+// ═══════════════════════════════════════
+function renderA(){
+  const s=sA;
+  const amt = s.payType==='min'?'₹850':s.payType==='full'?'₹1,470':s.custom?'₹'+s.custom:'₹0';
+
+  // J11: Paid state
+  if(s.mode==='paid') return `
+    <div style="padding:0 0 24px">
+      <div style="display:flex;align-items:center;padding:8px 16px 12px;gap:12px">${backArrow}<span style="font-size:17px;font-weight:700;flex:1;text-align:center">Utkarsh Bank Loan</span><span style="font-size:13px;font-weight:600;color:#E63946;cursor:pointer">HELP</span></div>
+      <div style="margin:20px 16px;padding:28px 20px;border-radius:20px;background:linear-gradient(135deg,#F0FFF4,#DCFCE7);text-align:center;border:1.5px solid #BBF7D0">
+        <div style="width:56px;height:56px;border-radius:50%;background:#2E7D32;display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div style="font-size:18px;font-weight:800;color:#166534;margin-bottom:4px">Payment Already Made</div>
+        <div style="font-size:13px;color:#15803D;margin-bottom:16px">Your EMI of ₹1,470 for April 2026 was paid on 10 Apr</div>
+        <div style="padding:12px;border-radius:10px;background:#fff;display:inline-block">
+          <div style="font-size:11px;color:#999;margin-bottom:2px">Next EMI due</div>
+          <div style="font-size:15px;font-weight:700;color:#1a1a1a">14 May 2026</div>
+        </div>
+      </div>
+      <div style="padding:0 16px"><button onclick="sA.mode='normal';el('phone-a').innerHTML=renderA()" style="width:100%;padding:12px;border-radius:12px;background:#F5F5F5;border:none;font-size:13px;font-weight:600;color:#555;cursor:pointer">← Back to normal view (demo)</button></div>
+    </div>`;
+
+  // J12: Downtime state
+  if(s.mode==='down') return `
+    <div style="padding:0 0 24px">
+      <div style="display:flex;align-items:center;padding:8px 16px 12px;gap:12px">${backArrow}<span style="font-size:17px;font-weight:700;flex:1;text-align:center">Utkarsh Bank Loan</span><span style="font-size:13px;font-weight:600;color:#E63946;cursor:pointer">HELP</span></div>
+      <div style="margin:20px 16px;padding:24px 20px;border-radius:20px;background:#FFF8E1;text-align:center;border:1.5px solid #FFE082">
+        <div style="font-size:36px;margin-bottom:12px">⚙️</div>
+        <div style="font-size:17px;font-weight:800;color:#E65100;margin-bottom:6px">Biller Temporarily Unavailable</div>
+        <div style="font-size:13px;color:#BF360C;margin-bottom:20px;line-height:1.5">Utkarsh Bank's payment system is under maintenance. This usually resolves within 2-3 hours.</div>
+        <div style="display:flex;gap:10px">
+          <button style="flex:1;padding:12px;border-radius:12px;background:#fff;border:1.5px solid #FF9800;color:#E65100;font-size:13px;font-weight:700;cursor:pointer" onclick="sA.mode='normal';el('phone-a').innerHTML=renderA()">Try Again</button>
+          <button style="flex:1;padding:12px;border-radius:12px;background:#E65100;border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer">🔔 Notify Me</button>
+        </div>
+      </div>
+      <div style="margin:16px;padding:12px;border-radius:10px;background:#F5F5F5;font-size:11px;color:#777;text-align:center;line-height:1.5">Your payment won't be late — we'll remind you as soon as the biller is back online.</div>
+      <div style="padding:0 16px"><button onclick="sA.mode='normal';el('phone-a').innerHTML=renderA()" style="width:100%;padding:10px;border-radius:10px;background:none;border:none;font-size:12px;color:#6C3CE1;font-weight:600;cursor:pointer;text-decoration:underline">Back to normal view (demo)</button></div>
+    </div>`;
+
+  return `
+    <div style="padding:0 0 20px">
+      <!-- Header -->
+      <div style="display:flex;align-items:center;padding:8px 16px 6px;gap:12px">
+        ${backArrow}
+        <div style="flex:1;text-align:center">
+          <div style="font-size:15px;font-weight:700">Paying Utkarsh Bank Loan</div>
+          <div style="font-size:11px;color:#888">Loan Account · pd70pcd6994083</div>
+        </div>
+        <span style="font-size:13px;font-weight:600;color:#E63946;cursor:pointer">HELP</span>
+      </div>
+
+      <!-- J14: Urgency banner -->
+      <div style="margin:8px 16px 12px;padding:10px 14px;border-radius:10px;background:#FFF5F5;border:1px solid #FECACA;display:flex;align-items:center;gap:8px">
+        <div style="color:#DC2626">${clock}</div>
+        <div style="flex:1">
+          <span style="font-size:12px;font-weight:700;color:#DC2626">Due 14 Apr 2026</span>
+          <span style="font-size:11px;color:#EF4444"> · 6 days left</span>
+        </div>
+        <span style="font-size:10px;color:#B91C1C;font-weight:600">Late fee: ₹500</span>
+      </div>
+
+      <!-- J16: Offer -->
+      <div style="margin:0 16px 14px;padding:8px 12px;border-radius:10px;background:linear-gradient(135deg,#FFF8E1,#FFF3CD);display:flex;align-items:center;gap:8px">
+        <span style="font-size:14px">🎁</span>
+        <span style="font-size:12px;color:#5D4037;flex:1">Save ₹1 using your ₹100</span>
+        <span style="font-size:11px;color:#E65100;font-weight:600">Apply</span>
+      </div>
+
+      <!-- J13: Amount due -->
+      <div style="padding:0 16px 14px">
+        <div style="padding:16px;border-radius:16px;background:#F8F9FA;border:1px solid #ECECEC">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">
+            <div>
+              <div style="font-size:11px;color:#999;margin-bottom:2px">Total outstanding</div>
+              <div style="font-size:28px;font-weight:800;color:#1a1a1a">₹5,268</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:11px;color:#999;margin-bottom:2px">Monthly EMI</div>
+              <div style="font-size:18px;font-weight:700;color:#1a1a1a">₹1,470</div>
+            </div>
+          </div>
+
+          <!-- J9: Quick-pick amount chips -->
+          <div style="font-size:11px;font-weight:700;color:#999;margin-bottom:8px">SELECT AMOUNT</div>
+          <div style="display:flex;gap:8px;margin-bottom:10px">
+            ${[{id:'min',label:'Minimum EMI',val:'₹850'},{id:'full',label:'Full EMI',val:'₹1,470'},{id:'custom',label:'Custom',val:''}].map(o => `
+              <button onclick="sA.payType='${o.id}';el('phone-a').innerHTML=renderA()" style="flex:1;padding:10px 6px;border-radius:10px;text-align:center;cursor:pointer;border:${s.payType===o.id?'2px solid #6C3CE1':'1.5px solid #E0E0E0'};background:${s.payType===o.id?'#F3EEFF':'#fff'}">
+                <div style="font-size:10px;color:${s.payType===o.id?'#6C3CE1':'#999'};font-weight:600;margin-bottom:2px">${o.label}</div>
+                ${o.val?`<div style="font-size:15px;font-weight:800;color:${s.payType===o.id?'#6C3CE1':'#1a1a1a'}">${o.val}</div>`:`<div style="font-size:11px;color:#999">Enter ↓</div>`}
+              </button>
+            `).join('')}
+          </div>
+
+          ${s.payType==='custom'?`
+          <div style="margin-bottom:10px">
+            <input value="${s.custom}" oninput="sA.custom=this.value;el('phone-a').innerHTML=renderA()" placeholder="Enter amount" style="width:100%;padding:12px 14px;border-radius:10px;border:2px solid #6C3CE1;font-size:18px;font-weight:700;outline:none;text-align:center;background:#FAFAFA"/>
+          </div>`:''}
+        </div>
+      </div>
+
+      <!-- J10: Summary (expandable) -->
+      <div style="padding:0 16px 12px">
+        <button onclick="sA.showSummary=!sA.showSummary;el('phone-a').innerHTML=renderA()" style="width:100%;padding:12px 14px;border-radius:12px;background:#F9FAFB;border:1px solid #E5E7EB;display:flex;align-items:center;gap:8px;cursor:pointer;text-align:left">
+          <span style="font-size:13px;font-weight:700;color:#333;flex:1">Payment summary</span>
+          <span style="font-size:14px;font-weight:800;color:#1a1a1a">${amt}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" style="transform:rotate(${s.showSummary?180:0}deg);transition:transform .2s"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        ${s.showSummary?`
+        <div style="padding:14px;border:1px solid #E5E7EB;border-top:none;border-radius:0 0 12px 12px;background:#FAFAFA">
+          ${[['Lender','Utkarsh Bank'],['Account','pd70pcd6994083'],['EMI Amount','₹1,470'],['Outstanding','₹5,268'],['Due Date','14 Apr 2026'],['Payment','HDFC Bank ···5268']].map(([k,v])=>`
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F0F0F0">
+              <span style="font-size:12px;color:#888">${k}</span>
+              <span style="font-size:12px;font-weight:600;color:#333">${v}</span>
+            </div>
+          `).join('')}
+          <div style="display:flex;justify-content:space-between;padding:8px 0 0">
+            <span style="font-size:13px;font-weight:700;color:#1a1a1a">You pay</span>
+            <span style="font-size:16px;font-weight:800;color:#6C3CE1">${amt}</span>
+          </div>
+        </div>`:''}
+      </div>
+
+      <!-- J15: History drawer -->
+      <div style="padding:0 16px 12px">
+        <button onclick="sA.showHistory=!sA.showHistory;el('phone-a').innerHTML=renderA()" style="width:100%;padding:10px 14px;border-radius:10px;background:none;border:1px solid #E5E7EB;display:flex;align-items:center;gap:8px;cursor:pointer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span style="font-size:12px;font-weight:600;color:#555;flex:1">Payment history</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" style="transform:rotate(${sA.showHistory?180:0}deg);transition:transform .2s"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        ${s.showHistory?`
+        <div style="padding:12px 14px;border:1px solid #E5E7EB;border-top:none;border-radius:0 0 10px 10px;background:#FAFAFA">
+          ${history.map(h=>`
+            <div style="display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #F0F0F0;gap:8px">
+              <div style="width:8px;height:8px;border-radius:50%;background:${h.status==='Paid'?'#2E7D32':'#FF9800'}"></div>
+              <span style="font-size:12px;color:#555;flex:1">${h.date}</span>
+              <span style="font-size:12px;font-weight:700;color:#1a1a1a">${h.amount}</span>
+              <span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:${h.status==='Paid'?'#E8F5E9':'#FFF3E0'};color:${h.status==='Paid'?'#2E7D32':'#E65100'}">${h.status}</span>
+            </div>
+          `).join('')}
+        </div>`:''}
+      </div>
+
+      <!-- J17: Something wrong -->
+      <div style="padding:0 16px 14px;text-align:center">
+        <button style="background:none;border:none;font-size:12px;color:#6C3CE1;font-weight:600;cursor:pointer;text-decoration:underline">Something doesn't look right? Get help</button>
+      </div>
+
+      <!-- Pay button -->
+      <div style="padding:0 16px 12px;display:flex;gap:10px">
+        <button style="flex:1;padding:15px;border-radius:14px;border:none;font-size:15px;font-weight:700;background:#1a1a1a;color:#fff;cursor:pointer">
+          Pay ${amt}
+        </button>
+      </div>
+
+      <!-- Demo toggles -->
+      <div style="padding:8px 16px;display:flex;gap:6px;flex-wrap:wrap">
+        <button onclick="sA.mode='paid';el('phone-a').innerHTML=renderA()" style="padding:5px 10px;border-radius:6px;background:#E8F5E9;border:none;font-size:10px;font-weight:600;color:#2E7D32;cursor:pointer">Demo: Paid state</button>
+        <button onclick="sA.mode='down';el('phone-a').innerHTML=renderA()" style="padding:5px 10px;border-radius:6px;background:#FFF3E0;border:none;font-size:10px;font-weight:600;color:#E65100;cursor:pointer">Demo: Downtime</button>
+      </div>
+
+      <div style="text-align:center;padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:6px">${shield}<span style="font-size:10px;color:#666">Secured · RBI Compliant · 256-bit encrypted</span></div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════
+// VARIATION B — Full Picture
+// ═══════════════════════════════════════
+function renderB(){
+  const s=sB;
+  const amt = s.payType==='min'?'₹850':s.payType==='full'?'₹1,470':s.custom?'₹'+s.custom:'₹0';
+
+  if(s.mode==='paid') return `
+    <div style="padding:0 0 24px">
+      <div style="background:linear-gradient(135deg,#0A1628,#1A2F4E);padding:8px 16px 20px;color:#fff">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">${backArrowW}<span style="font-size:17px;font-weight:700;flex:1;text-align:center">Utkarsh Bank Loan</span><span style="font-size:12px;opacity:.7">HELP</span></div>
+      </div>
+      <div style="margin:20px 16px;padding:24px;border-radius:20px;background:#F0FFF4;text-align:center;border:1.5px solid #BBF7D0">
+        <div style="font-size:40px;margin-bottom:10px">✅</div>
+        <div style="font-size:18px;font-weight:800;color:#166534;margin-bottom:6px">Already Paid This Month</div>
+        <div style="font-size:13px;color:#15803D;margin-bottom:16px">₹1,470 paid on 10 Apr 2026</div>
+        <div style="padding:10px;border-radius:8px;background:#fff;font-size:12px;color:#333"><b>Next due:</b> 14 May 2026 · ₹1,470</div>
+      </div>
+      <div style="padding:0 16px"><button onclick="sB.mode='normal';el('phone-b').innerHTML=renderB()" style="width:100%;padding:10px;border-radius:10px;background:#F5F5F5;border:none;font-size:12px;font-weight:600;color:#555;cursor:pointer">← Back to normal (demo)</button></div>
+    </div>`;
+
+  if(s.mode==='down') return `
+    <div style="padding:0 0 24px">
+      <div style="background:linear-gradient(135deg,#0A1628,#1A2F4E);padding:8px 16px 20px;color:#fff">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">${backArrowW}<span style="font-size:17px;font-weight:700;flex:1;text-align:center">Utkarsh Bank Loan</span><span style="font-size:12px;opacity:.7">HELP</span></div>
+        <div style="padding:10px 14px;border-radius:10px;background:rgba(255,152,0,.15);display:flex;align-items:center;gap:8px">
+          <span style="font-size:14px">⚠️</span>
+          <span style="font-size:12px;color:#FFB74D;flex:1">Biller system under maintenance</span>
+        </div>
+      </div>
+      <div style="margin:24px 16px;text-align:center;padding:24px;border-radius:16px;background:#FFFBEB;border:1px solid #FDE68A">
+        <div style="font-size:15px;font-weight:700;color:#92400E;margin-bottom:8px">Estimated back online in</div>
+        <div style="font-size:36px;font-weight:800;color:#D97706;margin-bottom:16px;font-family:'Courier New',monospace">~2h 15m</div>
+        <div style="display:flex;gap:10px">
+          <button onclick="sB.mode='normal';el('phone-b').innerHTML=renderB()" style="flex:1;padding:12px;border-radius:10px;background:#fff;border:1.5px solid #F59E0B;color:#D97706;font-size:13px;font-weight:700;cursor:pointer">Retry now</button>
+          <button style="flex:1;padding:12px;border-radius:10px;background:#D97706;border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer">🔔 Alert me</button>
+        </div>
+      </div>
+      <div style="padding:0 16px"><button onclick="sB.mode='normal';el('phone-b').innerHTML=renderB()" style="width:100%;padding:10px;border-radius:10px;background:none;border:none;font-size:12px;color:#0047AB;font-weight:600;cursor:pointer;text-decoration:underline">Back to normal (demo)</button></div>
+    </div>`;
+
+  return `
+    <div style="padding:0 0 20px">
+      <!-- Dark header -->
+      <div style="background:linear-gradient(135deg,#0A1628,#1A2F4E);padding:8px 16px 18px;color:#fff">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          ${backArrowW}
+          <span style="font-size:17px;font-weight:700;flex:1;text-align:center">Utkarsh Bank Loan</span>
+          <span style="font-size:12px;font-weight:600;opacity:.7;cursor:pointer">HELP</span>
+        </div>
+        <!-- J13: Due summary -->
+        <div style="display:flex;gap:10px">
+          <div style="flex:1;padding:12px;border-radius:12px;background:rgba(255,255,255,.08)">
+            <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:4px">EMI due</div>
+            <div style="font-size:22px;font-weight:800">₹1,470</div>
+          </div>
+          <div style="flex:1;padding:12px;border-radius:12px;background:rgba(255,255,255,.08)">
+            <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:4px">Total outstanding</div>
+            <div style="font-size:22px;font-weight:800">₹5,268</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- J14: Urgency countdown -->
+      <div style="margin:12px 16px;padding:10px 14px;border-radius:10px;background:#FEF2F2;border:1px solid #FECACA;display:flex;align-items:center;gap:8px">
+        <div style="font-size:14px">⏰</div>
+        <div style="flex:1">
+          <span style="font-size:12px;font-weight:700;color:#DC2626">Due in 6 days</span>
+          <span style="font-size:11px;color:#F87171"> · 14 Apr 2026</span>
+        </div>
+        <span style="font-size:10px;color:#B91C1C;font-weight:600;padding:3px 8px;background:#FEE2E2;border-radius:4px">Late fee ₹500</span>
+      </div>
+
+      <!-- J16: Offer -->
+      <div style="margin:0 16px 14px;padding:8px 12px;border-radius:10px;background:linear-gradient(135deg,#EEF2FF,#E8F0FE);display:flex;align-items:center;gap:8px;border:1px solid #C7D2FE">
+        <span style="font-size:14px">💰</span>
+        <span style="font-size:12px;color:#3730A3;flex:1;font-weight:600">Save ₹1 — apply savings now</span>
+        <button style="padding:4px 12px;border-radius:6px;background:#4338CA;border:none;color:#fff;font-size:11px;font-weight:700;cursor:pointer">Apply</button>
+      </div>
+
+      <!-- J9: Amount selection as radio cards -->
+      <div style="padding:0 16px 14px">
+        <div style="font-size:12px;font-weight:700;color:#999;margin-bottom:8px">HOW MUCH TO PAY?</div>
+        ${[
+          {id:'min',label:'Minimum Due',val:'₹850',desc:'Avoids late fee, interest accrues on remaining'},
+          {id:'full',label:'Full EMI',val:'₹1,470',desc:'Recommended — clears this month\'s dues completely'},
+          {id:'custom',label:'Custom Amount',val:'',desc:'Pay any amount between ₹850 – ₹5,268'}
+        ].map(o=>`
+          <button onclick="sB.payType='${o.id}';el('phone-b').innerHTML=renderB()" style="width:100%;padding:12px 14px;border-radius:12px;border:${s.payType===o.id?'2px solid #0047AB':'1.5px solid #E0E0E0'};background:${s.payType===o.id?'#EFF6FF':'#fff'};margin-bottom:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:12px">
+            <div style="width:20px;height:20px;border-radius:50%;border:2px solid ${s.payType===o.id?'#0047AB':'#ccc'};display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              ${s.payType===o.id?`<div style="width:10px;height:10px;border-radius:50%;background:#0047AB"></div>`:''}
+            </div>
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:baseline">
+                <span style="font-size:13px;font-weight:700;color:#1a1a1a">${o.label}</span>
+                ${o.val?`<span style="font-size:15px;font-weight:800;color:${s.payType===o.id?'#0047AB':'#333'}">${o.val}</span>`:''}
+              </div>
+              <div style="font-size:10px;color:#888;margin-top:2px">${o.desc}</div>
+            </div>
+          </button>
+        `).join('')}
+
+        ${s.payType==='custom'?`
+        <input value="${s.custom}" oninput="sB.custom=this.value;el('phone-b').innerHTML=renderB()" placeholder="Enter amount (₹850 – ₹5,268)" style="width:100%;padding:12px;border-radius:10px;border:2px solid #0047AB;font-size:16px;font-weight:700;outline:none;text-align:center;margin-bottom:8px"/>`:''}
+      </div>
+
+      <!-- J10: Always-visible breakdown -->
+      <div style="margin:0 16px 12px;padding:14px;border-radius:14px;background:#F8F9FA;border:1px solid #ECECEC">
+        <div style="font-size:11px;font-weight:700;color:#999;margin-bottom:8px">PAYMENT BREAKDOWN</div>
+        ${[['Lender','Utkarsh Bank'],['Account','pd70pcd699...'],['Due Date','14 Apr 2026'],['Payment method','HDFC ···5268']].map(([k,v])=>`
+          <div style="display:flex;justify-content:space-between;padding:5px 0"><span style="font-size:12px;color:#888">${k}</span><span style="font-size:12px;font-weight:600;color:#333">${v}</span></div>
+        `).join('')}
+        <div style="border-top:1.5px solid #E0E0E0;margin-top:6px;padding-top:8px;display:flex;justify-content:space-between">
+          <span style="font-size:14px;font-weight:700">You pay</span>
+          <span style="font-size:18px;font-weight:800;color:#0047AB">${amt}</span>
+        </div>
+      </div>
+
+      <!-- J15: History -->
+      <div style="padding:0 16px 12px">
+        <button onclick="sB.showHistory=!sB.showHistory;el('phone-b').innerHTML=renderB()" style="width:100%;padding:10px;border-radius:10px;background:none;border:1px solid #E5E7EB;display:flex;align-items:center;gap:8px;cursor:pointer">
+          <span style="font-size:12px;font-weight:600;color:#555;flex:1;text-align:left">📋 Payment history</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" style="transform:rotate(${s.showHistory?180:0}deg)"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        ${s.showHistory?`<div style="padding:10px 14px;border:1px solid #E5E7EB;border-top:none;border-radius:0 0 10px 10px;background:#FAFAFA">${history.map(h=>`<div style="display:flex;align-items:center;padding:7px 0;border-bottom:1px solid #F0F0F0;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:${h.status==='Paid'?'#2E7D32':'#FF9800'}"></div><span style="font-size:12px;color:#555;flex:1">${h.date}</span><span style="font-size:12px;font-weight:700">${h.amount}</span><span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:${h.status==='Paid'?'#E8F5E9':'#FFF3E0'};color:${h.status==='Paid'?'#2E7D32':'#E65100'}">${h.status}</span></div>`).join('')}</div>`:''}
+      </div>
+
+      <!-- Pay -->
+      <div style="padding:0 16px 10px"><button style="width:100%;padding:15px;border-radius:14px;border:none;font-size:15px;font-weight:700;background:linear-gradient(135deg,#0A1628,#1A2F4E);color:#fff;cursor:pointer">Pay ${amt}</button></div>
+
+      <!-- J17 -->
+      <div style="text-align:center;padding:0 16px 10px"><button style="background:none;border:none;font-size:11px;color:#0047AB;font-weight:600;cursor:pointer">Something wrong? Contact support →</button></div>
+
+      <!-- Demo -->
+      <div style="padding:4px 16px;display:flex;gap:6px;flex-wrap:wrap">
+        <button onclick="sB.mode='paid';el('phone-b').innerHTML=renderB()" style="padding:4px 10px;border-radius:6px;background:#E8F5E9;border:none;font-size:10px;font-weight:600;color:#2E7D32;cursor:pointer">Demo: Paid</button>
+        <button onclick="sB.mode='down';el('phone-b').innerHTML=renderB()" style="padding:4px 10px;border-radius:6px;background:#FFF3E0;border:none;font-size:10px;font-weight:600;color:#E65100;cursor:pointer">Demo: Down</button>
+      </div>
+      <div style="text-align:center;padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:6px">${shield}<span style="font-size:10px;color:#666">Secured · RBI Compliant</span></div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════
+// VARIATION C — Step Flow
+// ═══════════════════════════════════════
+function renderC(){
+  const s=sC;
+  const amt = s.payType==='min'?'₹850':s.payType==='full'?'₹1,470':s.custom?'₹'+s.custom:'₹0';
+
+  if(s.mode==='paid') return `
+    <div style="padding:0 0 24px">
+      <div style="display:flex;align-items:center;padding:8px 16px 12px;gap:12px">${backArrow}<span style="font-size:17px;font-weight:700;flex:1;text-align:center">Utkarsh Bank</span><span style="font-size:13px;font-weight:600;color:#E63946">HELP</span></div>
+      <div style="margin:24px 16px;padding:28px 20px;border-radius:20px;background:#ECFDF5;text-align:center;border:2px solid #A7F3D0">
+        <div style="width:60px;height:60px;border-radius:50%;background:#059669;display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div style="font-size:20px;font-weight:800;color:#065F46;margin-bottom:4px">Paid ✓</div>
+        <div style="font-size:14px;color:#047857;margin-bottom:20px">₹1,470 on 10 Apr 2026</div>
+        <div style="display:flex;gap:10px;justify-content:center">
+          <button style="padding:10px 20px;border-radius:10px;background:#fff;border:1.5px solid #10B981;color:#059669;font-size:12px;font-weight:700;cursor:pointer">View receipt</button>
+          <button onclick="sC.mode='normal';sC.step=1;el('phone-c').innerHTML=renderC()" style="padding:10px 20px;border-radius:10px;background:#059669;border:none;color:#fff;font-size:12px;font-weight:700;cursor:pointer">Done</button>
+        </div>
+      </div>
+    </div>`;
+
+  if(s.mode==='down') return `
+    <div style="padding:0 0 24px">
+      <div style="display:flex;align-items:center;padding:8px 16px 12px;gap:12px">${backArrow}<span style="font-size:17px;font-weight:700;flex:1;text-align:center">Utkarsh Bank</span><span style="font-size:13px;font-weight:600;color:#E63946">HELP</span></div>
+      <div style="margin:24px 16px;padding:24px;border-radius:16px;background:#FFF7ED;border:1.5px solid #FDBA74;text-align:center">
+        <div style="font-size:14px">🔧</div>
+        <div style="font-size:16px;font-weight:800;color:#9A3412;margin:10px 0 6px">Biller Under Maintenance</div>
+        <div style="font-size:12px;color:#C2410C;line-height:1.5;margin-bottom:16px">Utkarsh Bank's system is temporarily down. You can schedule a retry or get notified.</div>
+        <div style="display:flex;gap:10px">
+          <button onclick="sC.mode='normal';sC.step=1;el('phone-c').innerHTML=renderC()" style="flex:1;padding:12px;border-radius:10px;background:#fff;border:1.5px solid #EA580C;color:#C2410C;font-size:13px;font-weight:700;cursor:pointer">Try now</button>
+          <button style="flex:1;padding:12px;border-radius:10px;background:#EA580C;border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer">🔔 Notify me</button>
+        </div>
+      </div>
+      <div style="margin:16px;padding:12px;border-radius:8px;background:#FEF3C7;font-size:11px;color:#92400E;text-align:center">⏱ Don't worry — your due date is 14 Apr. We'll alert you in time.</div>
+    </div>`;
+
+  // Step 2: Review
+  if(s.step===2) return `
+    <div style="padding:0 0 20px">
+      <div style="display:flex;align-items:center;padding:8px 16px 12px;gap:12px">
+        <button onclick="sC.step=1;el('phone-c').innerHTML=renderC()" style="background:none;border:none;cursor:pointer">${backArrow}</button>
+        <span style="font-size:17px;font-weight:700;flex:1;text-align:center">Review & Pay</span>
+        <span style="font-size:13px;font-weight:600;color:#E63946;cursor:pointer">HELP</span>
+      </div>
+
+      <!-- Step bar -->
+      <div style="display:flex;align-items:center;padding:0 16px 20px;gap:0">
+        <div style="width:28px;height:28px;border-radius:50%;background:#2E7D32;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700">✓</div>
+        <div style="flex:1;height:3px;background:#2E7D32"></div>
+        <div style="width:28px;height:28px;border-radius:50%;background:#C75000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700">2</div>
+      </div>
+
+      <!-- J10: Full summary -->
+      <div style="margin:0 16px 16px;padding:20px;border-radius:16px;background:#FFFBF5;border:1.5px solid #FDDCB5">
+        <div style="font-size:14px;font-weight:700;color:#C75000;margin-bottom:14px">Payment Summary</div>
+        ${[['Lender','Utkarsh Bank'],['Account','pd70pcd6994083'],['Loan Type','Personal Loan'],['Amount Type',s.payType==='min'?'Minimum EMI':s.payType==='full'?'Full EMI':'Custom Amount'],['Due Date','14 Apr 2026'],['Payment Via','HDFC Bank ···5268']].map(([k,v])=>`
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #FEE8D0"><span style="font-size:12px;color:#9A7B4F">${k}</span><span style="font-size:12px;font-weight:600;color:#333">${v}</span></div>
+        `).join('')}
+        <div style="margin-top:10px;padding-top:10px;border-top:2px solid #F4D5A6;display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:15px;font-weight:700">Total</span>
+          <span style="font-size:24px;font-weight:800;color:#C75000">${amt}</span>
+        </div>
+      </div>
+
+      <!-- J16: Savings applied -->
+      <div style="margin:0 16px 16px;padding:10px 14px;border-radius:10px;background:#F0FFF4;border:1px solid #BBF7D0;display:flex;align-items:center;gap:8px">
+        <span style="font-size:14px">🎁</span>
+        <span style="font-size:12px;color:#166534;font-weight:600;flex:1">₹1 savings applied</span>
+        <span style="font-size:12px;font-weight:700;color:#059669">-₹1</span>
+      </div>
+
+      <!-- J15: History in review -->
+      <div style="padding:0 16px 14px">
+        <button onclick="sC.showHistory=!sC.showHistory;el('phone-c').innerHTML=renderC()" style="width:100%;padding:10px;border-radius:10px;background:#F5F5F5;border:none;display:flex;align-items:center;gap:8px;cursor:pointer">
+          <span style="font-size:12px;font-weight:600;color:#555;flex:1;text-align:left">View past payments</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" style="transform:rotate(${s.showHistory?180:0}deg)"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        ${s.showHistory?`<div style="padding:10px 14px;background:#FAFAFA;border-radius:0 0 10px 10px">${history.map(h=>`<div style="display:flex;align-items:center;padding:6px 0;gap:8px;border-bottom:1px solid #F0F0F0"><div style="width:7px;height:7px;border-radius:50%;background:${h.status==='Paid'?'#2E7D32':'#FF9800'}"></div><span style="font-size:12px;color:#555;flex:1">${h.date}</span><span style="font-size:12px;font-weight:700">${h.amount}</span><span style="font-size:10px;font-weight:600;color:${h.status==='Paid'?'#2E7D32':'#E65100'}">${h.status}</span></div>`).join('')}</div>`:''}
+      </div>
+
+      <!-- Buttons -->
+      <div style="padding:0 16px 12px;display:flex;gap:10px">
+        <button onclick="sC.step=1;el('phone-c').innerHTML=renderC()" style="flex:1;padding:14px;border-radius:14px;border:1.5px solid #ddd;background:#fff;font-size:14px;font-weight:700;color:#555;cursor:pointer">← Edit</button>
+        <button style="flex:2;padding:14px;border-radius:14px;border:none;background:#C75000;color:#fff;font-size:14px;font-weight:700;cursor:pointer">Confirm & Pay ${amt}</button>
+      </div>
+      <div style="text-align:center;padding:4px 16px;display:flex;align-items:center;justify-content:center;gap:6px">${shield}<span style="font-size:10px;color:#666">Secured · RBI Compliant</span></div>
+    </div>`;
+
+  // Step 1: Choose amount
+  return `
+    <div style="padding:0 0 20px">
+      <div style="display:flex;align-items:center;padding:8px 16px 12px;gap:12px">
+        ${backArrow}
+        <span style="font-size:17px;font-weight:700;flex:1;text-align:center">Utkarsh Bank Loan</span>
+        <span style="font-size:13px;font-weight:600;color:#E63946;cursor:pointer">HELP</span>
+      </div>
+
+      <!-- Step bar -->
+      <div style="display:flex;align-items:center;padding:0 16px 16px;gap:0">
+        <div style="width:28px;height:28px;border-radius:50%;background:#C75000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700">1</div>
+        <div style="flex:1;height:3px;background:#E0E0E0"></div>
+        <div style="width:28px;height:28px;border-radius:50%;background:#E0E0E0;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;font-weight:700">2</div>
+      </div>
+
+      <!-- Lender + J13 due -->
+      <div style="margin:0 16px 12px;padding:16px;border-radius:16px;background:#F8F9FA;border:1px solid #ECECEC">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="width:42px;height:42px;border-radius:10px;background:#2D6A4F;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700">Ut</div>
+          <div style="flex:1">
+            <div style="font-size:15px;font-weight:700">Utkarsh Bank</div>
+            <div style="font-size:11px;color:#888">pd70pcd6994083</div>
+          </div>
+          ${shield}
+        </div>
+        <div style="display:flex;gap:10px">
+          <div style="flex:1;padding:10px;border-radius:10px;background:#fff;text-align:center">
+            <div style="font-size:10px;color:#999">EMI due</div>
+            <div style="font-size:20px;font-weight:800">₹1,470</div>
+          </div>
+          <div style="flex:1;padding:10px;border-radius:10px;background:#fff;text-align:center">
+            <div style="font-size:10px;color:#999">Outstanding</div>
+            <div style="font-size:20px;font-weight:800">₹5,268</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- J14: Urgency -->
+      <div style="margin:0 16px 14px;padding:10px 12px;border-radius:10px;background:#FEF2F2;border:1px solid #FECACA;display:flex;align-items:center;gap:8px">
+        <span style="font-size:13px">⏰</span>
+        <span style="font-size:12px;font-weight:700;color:#DC2626;flex:1">Due 14 Apr · 6 days left</span>
+        <span style="font-size:10px;color:#B91C1C;font-weight:600">Late fee ₹500</span>
+      </div>
+
+      <!-- J16: Offer -->
+      <div style="margin:0 16px 14px;padding:8px 12px;border-radius:10px;background:#FFF8E1;display:flex;align-items:center;gap:8px">
+        <span style="font-size:13px">🎁</span>
+        <span style="font-size:12px;color:#5D4037;flex:1">Save ₹1 on this payment</span>
+        <span style="font-size:11px;color:#E65100;font-weight:600">Apply</span>
+      </div>
+
+      <!-- J9: Amount cards -->
+      <div style="padding:0 16px 14px">
+        <div style="font-size:12px;font-weight:700;color:#999;margin-bottom:10px">CHOOSE AMOUNT</div>
+
+        <button onclick="sC.payType='min';el('phone-c').innerHTML=renderC()" style="width:100%;padding:14px;border-radius:14px;border:${s.payType==='min'?'2px solid #C75000':'1.5px solid #E0E0E0'};background:${s.payType==='min'?'#FFF7ED':'#fff'};margin-bottom:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:12px">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid ${s.payType==='min'?'#C75000':'#ccc'};display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.payType==='min'?'<div style="width:10px;height:10px;border-radius:50%;background:#C75000"></div>':''}</div>
+          <div style="flex:1"><div style="font-size:13px;font-weight:700">Minimum EMI</div><div style="font-size:10px;color:#888">Avoids late fee only</div></div>
+          <span style="font-size:18px;font-weight:800;color:${s.payType==='min'?'#C75000':'#333'}">₹850</span>
+        </button>
+
+        <button onclick="sC.payType='full';el('phone-c').innerHTML=renderC()" style="width:100%;padding:14px;border-radius:14px;border:${s.payType==='full'?'2px solid #C75000':'1.5px solid #E0E0E0'};background:${s.payType==='full'?'#FFF7ED':'#fff'};margin-bottom:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;right:0;padding:2px 10px;background:#C75000;color:#fff;font-size:9px;font-weight:700;border-radius:0 0 0 8px">RECOMMENDED</div>
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid ${s.payType==='full'?'#C75000':'#ccc'};display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.payType==='full'?'<div style="width:10px;height:10px;border-radius:50%;background:#C75000"></div>':''}</div>
+          <div style="flex:1"><div style="font-size:13px;font-weight:700">Full EMI</div><div style="font-size:10px;color:#888">Clears this month completely</div></div>
+          <span style="font-size:18px;font-weight:800;color:${s.payType==='full'?'#C75000':'#333'}">₹1,470</span>
+        </button>
+
+        <button onclick="sC.payType='custom';el('phone-c').innerHTML=renderC()" style="width:100%;padding:14px;border-radius:14px;border:${s.payType==='custom'?'2px solid #C75000':'1.5px solid #E0E0E0'};background:${s.payType==='custom'?'#FFF7ED':'#fff'};margin-bottom:8px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:12px">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid ${s.payType==='custom'?'#C75000':'#ccc'};display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.payType==='custom'?'<div style="width:10px;height:10px;border-radius:50%;background:#C75000"></div>':''}</div>
+          <div style="flex:1"><div style="font-size:13px;font-weight:700">Custom Amount</div><div style="font-size:10px;color:#888">₹850 – ₹5,268</div></div>
+        </button>
+
+        ${s.payType==='custom'?`<input value="${s.custom}" oninput="sC.custom=this.value;el('phone-c').innerHTML=renderC()" placeholder="Enter amount" style="width:100%;padding:12px;border-radius:10px;border:2px solid #C75000;font-size:18px;font-weight:700;outline:none;text-align:center;margin-bottom:4px"/>`:''}
+      </div>
+
+      <!-- Next -->
+      <div style="padding:0 16px 12px">
+        <button onclick="sC.step=2;sC.showHistory=false;el('phone-c').innerHTML=renderC()" style="width:100%;padding:15px;border-radius:14px;border:none;font-size:15px;font-weight:700;background:#C75000;color:#fff;cursor:pointer">Review Payment →</button>
+      </div>
+
+      <!-- J17 -->
+      <div style="text-align:center;padding:0 16px 10px"><button style="background:none;border:none;font-size:11px;color:#C75000;font-weight:600;cursor:pointer;text-decoration:underline">Something wrong? Get help</button></div>
+
+      <!-- Demo toggles -->
+      <div style="padding:4px 16px;display:flex;gap:6px;flex-wrap:wrap">
+        <button onclick="sC.mode='paid';el('phone-c').innerHTML=renderC()" style="padding:4px 10px;border-radius:6px;background:#E8F5E9;border:none;font-size:10px;font-weight:600;color:#2E7D32;cursor:pointer">Demo: Paid</button>
+        <button onclick="sC.mode='down';el('phone-c').innerHTML=renderC()" style="padding:4px 10px;border-radius:6px;background:#FFF3E0;border:none;font-size:10px;font-weight:600;color:#E65100;cursor:pointer">Demo: Down</button>
+      </div>
+
+      <div style="text-align:center;padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:6px">${shield}<span style="font-size:10px;color:#666">Secured · RBI Compliant</span></div>
+    </div>`;
+}
+
+function el(id){ return document.getElementById(id); }
+
+// Init
+el('phone-a').innerHTML = renderA();
+el('phone-b').innerHTML = renderB();
+el('phone-c').innerHTML = renderC();
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tab = btn.dataset.tab;
+    const row = el('phones-row'), matrix = el('matrix-section');
+    if(tab==='matrix'){ row.classList.add('hidden'); matrix.classList.remove('hidden'); }
+    else {
+      row.classList.remove('hidden'); matrix.classList.add('hidden');
+      document.querySelectorAll('.phone-wrapper').forEach(pw => {
+        pw.classList.toggle('hidden', tab!=='all' && tab!==pw.dataset.variation);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
